@@ -1,0 +1,164 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<div class="col-xl-auto">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <i class="fas fa-table"></i>
+            {{ titulo|title }}
+        </div>
+        <div class="card-body">
+            <br/>
+            <div class="table-responsive">
+                <div class="dataTables_wrapper dt-bootstrap4" id="dataTable_wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table aria-describedby="dataTable_info" cellspacing="0"
+                                   class="table table-bordered dataTable "
+                                   id="dataTable" role="grid" style="width: 100%;" width="100%">
+                                <thead class="bg-light">
+                                <tr role="row">
+                                    <th colspan="1" rowspan="1" style="width: 243px;" tabindex="0">Detalhe</th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting_asc" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        CODLOG
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Setor
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Quadra
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">Lote
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;"
+                                        tabindex="0">
+                                        Publicação
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;"
+                                        tabindex="0">
+                                        Pag.DOC
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" rowspan="1" style="width: 243px;" tabindex="0">Prefeitura
+                                        Regional
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" hidden rowspan="1">Expediente
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" hidden rowspan="1" style="width: 243px;"
+                                        tabindex="0">
+                                        Despacho
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Endereço
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" hidden rowspan="1" style="width: 243px;"
+                                        tabindex="0">
+                                        Decreto
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Nº Antigo
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Nº Novo
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" rowspan="1" tabindex="0" hidden>Interessado
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0"
+                                        hidden>Nº
+                                        Solicitação
+                                    </th>
+                                    <th colspan="1" rowspan="1" style="width: 243px;" tabindex="0">Editar</th>
+                                </tr>
+                                </thead>
+                                <tfoot class="bg-light">
+                                <tr>
+                                    <th colspan="1" rowspan="1">Detalhe</th>
+                                    <th colspan="1" rowspan="1">CODLOG</th>
+                                    <th colspan="1" rowspan="1">Setor</th>
+                                    <th colspan="1" rowspan="1">Quadra</th>
+                                    <th colspan="1" rowspan="1">Lote</th>
+                                    <th colspan="1" rowspan="1">Publicação</th>
+                                    <th colspan="1" rowspan="1">Pág.DOC</th>
+                                    <th rowspan="1">Prefeitura Regional</th>
+                                    <th rowspan="1">Endereço</th>
+                                    <th colspan="1" rowspan="1">Nº Antigo</th>
+                                    <th colspan="1" rowspan="1">Nº Novo</th>
+                                    <th colspan="1" rowspan="1">Editar</th>
+                                    <th hidden>Expediente</th>
+                                    <th hidden>Despacho</th>
+                                    <th hidden>Decreto</th>
+                                    <th hidden>Interessado</th>
+                                    <th hidden>Nº Solicitação</th>
+                                </tr>
+                                </tfoot>
+                                <tbody class="bg-white">
+                                {% if numeracao %}
+                                {% for r in numeracao %}
+                                <tr class="odd" role="row">
+                                    <td class="text-center">
+                                        <a href="{{url_for('numeracao.numeracaoR', id_numeracao=r.id)}}">
+                                            <i class="fa fa-search-plus" style="color: #005dbf"></i>
+                                        </a>
+                                    </td>
+                                    <td>{{ r.cd_codlog }}</td>
+                                    <td class="sorting_1">{{ r.cd_setor }}</td>
+                                    <td>{{ r.cd_quadra }}</td>
+                                    <td>{{ r.cd_lote }}</td>
+                                    <td>{{ r.dt_publicacao }}</td>
+                                    <td>{{ r.nr_pagina }}</td>
+                                    <td>{{ r.nm_prefeitura_regional|title }}</td>
+                                    <td>{{ r.ds_endereco|title }}</td>
+                                    <td>{{ r.nr_numeral_antigo }}</td>
+                                    <td>{{ r.nr_numeral_novo }}</td>
+                                    <td class="text-center">
+                                        <a href="{{url_for('numeracao.numeracaoU', id_numeracao=r.id)}}">
+                                            <i class="fa fa-folder-plus" style="color: #05BF00"></i>
+                                        </a>
+                                    </td>
+                                    <td hidden>{{ r.cd_expediente }}</td>
+                                    <td hidden>{{ r.ds_despacho }}</td>
+                                    <td hidden>{{ r.cd_decreto }}</td>
+                                    <td hidden>{{ r.nm_interessados|title }}</td>
+                                    <td hidden>{{ r.cd_solicitacao_numeracao }}</td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container col-xl-8">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab"
+                       role="tab">{{ titulo|title }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <br/>
+                    <form action="{{url_for('users.update_user')}}" enctype="multipart/form-data" method="post">
+                        <div class="col-xl-auto">
+                            <label for="id_user" hidden></label>
+                            <input class="" hidden id="id_user" name="id_user" value="{{user.id}}">
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-10">
+                                    <input class="form-control col-xl-12" id="nm_nome" name="nm_nome" required
+                                           type="text" value="{{user.nm_nome}}">
+                                    <label class="col-xl-auto mb-auto" for="nm_nome">Nome Completo:</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-8" id="nm_login" name="nm_login" required
+                                           type="text" value="{{user.nm_login}}">
+                                    <label class="col-xl-auto mb-auto" for="nm_login">Login:</label>
+                                </div>
+                                <div class="form-label-group col-xl-2"></div>
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-8" id="nr_rf" name="nr_rf" type="text"
+                                           value="{{user.nr_rf}}">
+                                    <label for="nr_rf">RF:</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-10">
+                                    <input class="form-control col-xl-12" id="nm_email" name="nm_email" required
+                                           type="email" value="{{user.nm_email}}">
+                                    <label class="col-xl-auto mb-auto" for="nm_email">E-mail:</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <input type="hidden" value="{{session['logged_user']}}" name="login_atualizacao"
+                                   id="login_atualizacao">
+
+                            <br/>
+                            <div class="col-xl-auto form-row ">
+                                <div class="col-xl-1 mb-auto">
+                                    <button class="btn btn-success btn-salvar " type="submit">Salvar</button>
+                                </div>
+                                <div class="col-xl-2">
+                                    <a class="btn btn-primary " href="{{url_for('users.userList')}}">
+                                        Voltar
+                                    </a>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer small text-muted">{{ titulo|title }}</div>
+    </div>
+</div>
+{% endblock %}

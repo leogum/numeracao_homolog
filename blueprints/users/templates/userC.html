@@ -1,0 +1,70 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<div class="container col-xl-7">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab"
+                       role="tab">{{ titulo|title }}</a>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" id="anexo-tab" data-toggle="tab" href="#anexo" role="tab"-->
+                <!--                       aria-controls="profile" aria-selected="false">Anexos</a>-->
+                <!--                </li>-->
+            </ul>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('users.insert_user') }}" enctype="multipart/form-data" method="post">
+                <fieldset>
+                    <div class="form-row justify-content-xl-start">
+                        <div class="form-label-group col-xl-10">
+                            <input class="form-control col-xl-12" id="nm_nome" name="nm_nome" required
+                                   type="text">
+                            <label class="col-xl-auto mb-auto" for="nm_nome">Nome Completo:</label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-row justify-content-xl-start">
+                        <div class="form-label-group col-xl-auto">
+                            <input class="form-control col-xl-8" id="nm_login" name="nm_login" required
+                                   type="text">
+                            <label class="col-xl-auto mb-auto" for="nm_login">Login:</label>
+                        </div>
+                        <div class="form-label-group col-xl-2"></div>
+                        <div class="form-label-group col-xl-auto">
+                            <input class="form-control col-xl-6" id="nr_rf" name="nr_rf" type="text">
+                            <label for="nr_rf">RF:</label>
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div class="form-row justify-content-xl-start">
+                        <div class="form-label-group col-xl-10">
+                            <input class="form-control col-xl-12" id="nm_email" name="nm_email"
+                                   type="email" value="@prefeitura.sp.gov.br">
+                            <label class="col-xl-auto mb-auto" for="nm_email">E-mail:</label>
+                        </div>
+                    </div>
+                    <input type="hidden" value="{{session['logged_user']}}" name="login_atualizacao"
+                           id="login_atualizacao">
+                    <br/>
+                    <div class="col-xl-auto form-row ">
+                        <div class="col-xl-2 mb-auto">
+                            <button class="btn btn-success btn-salvar " type="submit">Salvar</button>
+                        </div>
+                        <br/>
+                        <div class="col-xl-2">
+                            <a class="btn btn-primary " href="{{url_for('users.userList')}}">
+                                Voltar
+                            </a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="card-footer small text-muted">{{ titulo|title }}</div>
+    </div>
+</div>
+{% endblock %}

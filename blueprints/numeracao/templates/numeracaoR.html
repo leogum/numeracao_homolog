@@ -1,0 +1,149 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container col-xl-8">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab" role="tab">{{ titulo|title }}</a>
+                </li>
+                {% if retificada != True%}
+                <li class="nav-item">
+                    <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#anexo"
+                       id="anexo-tab" role="tab">Anexos</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <fieldset>
+                        <input class="" hidden id="id_numeracao" name="id_numeracao" value="{{id_numeracao}}">
+                        <br/>
+
+                        {% if numeracao.retificada == 'True' %}
+                        <div class="form-row col-xl-auto">
+                            <label class="alert-warning">Numeração Retificada--- <a
+                                    href="{{url_for('numeracao.numeracao_retificada', id_numeracao=id_numeracao)}}">link
+                                para a antiga</a></label>
+                        </div>
+                        {% endif %}
+
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>CODLOG: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.cd_codlog }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 "><strong>Setor: </strong></label>
+                            <label class="col-xl-1 "> {{ numeracao.cd_setor }}</label>
+                            <label class="col-xl-1 "></label>
+
+                            <label class="col-xl-2 mb-auto"><strong>Quadra: </strong></label>
+                            <label class="col-xl-1 mb-auto"> {{ numeracao.cd_quadra }}</label>
+                            <label class="col-xl-1 "></label>
+
+                            <label class="col-xl-2 mb-auto"><strong>Lote: </strong></label>
+                            <label class="col-xl-1 mb-auto"> {{ numeracao.cd_lote }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Prefeitura Regional: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.nm_prefeitura_regional }}</label>
+                        </div>
+
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Publicação: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ numeracao.dt_publicacao }}</label>
+
+                            <label class="col-xl-2 mb-auto"><strong>Nº Pág. DOC: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ numeracao.nr_pagina }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Prefeitura Regional: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.nm_prefeitura_regional }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Nº Expediente: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.cd_expediente }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Despacho: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.ds_despacho }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Endereço: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.ds_endereco }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Decreto: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.cd_decreto }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Numeral Antigo: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.nr_numeral_antigo }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Numeral Novo: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.nr_numeral_novo }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Interessado: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.nm_interessados }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Nº Solicitação: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.cd_solicitacao_numeracao }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Texto D.O.C.: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ numeracao.ds_doc }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Ultima atualização: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ numeracao.dthr_atualizacao }}</label>
+
+                            <label class="col-xl-1 mb-auto"><strong>Por: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ numeracao.nm_login }}</label>
+                        </div>
+                        <br/>
+                        {% if retificada != True%}
+                        <div class="col-xl-auto mb-auto">
+                            <a class="btn btn-primary " href="{{url_for('index')}}">
+                                Voltar
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="col-xl-auto mb-auto">
+                            <a class="btn btn-primary "
+                               href="{{url_for('numeracao.numeracaoR', id_numeracao=id_numeracao)}}">
+                                Voltar
+                            </a>
+                        </div>
+                        {% endif%}
+                    </fieldset>
+                </div>
+                <!-- tab Anexo -->
+                {% include 'includes/anexo_tab.html' %}
+                <!-- /.tab Anexo -->
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container col-xl-7">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab"
+                       role="tab">{{ titulo|title }}</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#anexo"
+                       id="anexo-tab" role="tab">Anexos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <br/>
+                    <form action=" {{url_for('numeracao.retificar')}} " enctype="multipart/form-data"
+                          method="post">
+                        <fieldset>
+                            <input id="id_numeracao" name="id_numeracao" type="hidden" value="{{id_numeracao}}">
+                            <input id="retificada" name="retificada" type="hidden" value="{{retificacao}}">
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="cd_codlog" name="cd_codlog" required
+                                           type="text" value="{{numeracao.cd_codlog}}">
+                                    <label class="col-xl-2 mb-auto " for="cd_codlog">CODLOG:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="cd_setor" maxlength="3" name="cd_setor"
+                                           type="text" value="{{numeracao.cd_setor}}">
+                                    <label for="cd_setor">Setor:</label>
+                                </div>
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-6" id="cd_quadra" maxlength="3" name="cd_quadra"
+                                           type="text" value="{{numeracao.cd_quadra}}">
+                                    <label for="cd_quadra">Quadra:</label>
+                                </div>
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-6" id="cd_lote" name="cd_lote" type="text"
+                                           value="{{numeracao.cd_lote}}">
+                                    <label for="cd_lote">Lote:</label>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="nr_numeral_antigo"
+                                           name="nr_numeral_antigo" maxlength="4"
+                                           type="text" value="{{numeracao.nr_numeral_antigo}}">
+                                    <label for="nr_numeral_antigo">Numeral Antigo:</label>
+                                </div>
+
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-6" id="nr_numeral_novo" name="nr_numeral_novo"
+                                           type="text" value="{{numeracao.nr_numeral_novo}}" maxlength="4">
+                                    <label for="nr_numeral_novo">Numeral Novo:</label>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-11" id="dt_publicacao" name="dt_publicacao"
+                                           type="date" value="{{numeracao.dt_publicacao}}">
+                                    <label for="dt_publicacao">Data Publicação:</label>
+                                </div>
+
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-6" id="nr_pagina" name="nr_pagina" type="text"
+                                           value="{{numeracao.nr_pagina}}" maxlength="4">
+                                    <label for="nr_pagina">Pág. DOC:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="cd_expediente" name="cd_expediente"
+                                           type="text" value="{{numeracao.cd_expediente}}">
+                                    <label class="col-xl-auto mb-auto" for="cd_expediente">Nº Expediente:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="ds_despacho" name="ds_despacho"
+                                           type="text" value="{{numeracao.ds_despacho}}">
+                                    <label for="ds_despacho">Despacho:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-10" id="cd_decreto" name="cd_decreto" type="text"
+                                           value="{{numeracao.cd_decreto}}">
+                                    <label for="cd_decreto">Decreto:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control" id="nm_prefeitura_regional"
+                                           name="nm_prefeitura_regional"
+                                           type="text" value="{{numeracao.nm_prefeitura_regional}}">
+                                    <label for="nm_prefeitura_regional">Prefeitura Regional:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-12">
+                                    <input class="form-control col-xl-9" id="ds_endereco" name="ds_endereco"
+                                           type="text" value="{{numeracao.ds_endereco}}">
+                                    <label for="ds_endereco">Endereço:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-12">
+                                    <input class="form-control col-xl-9" id="nm_interessados" name="nm_interessados"
+                                           type="text" value="{{numeracao.nm_interessados}}">
+                                    <label for="nm_interessados">Interessado: </label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-6">
+                                    <input class="form-control col-xl-6" id="cd_solicitacao_numeracao"
+                                           name="cd_solicitacao_numeracao" type="text"
+                                           value="{{numeracao.cd_solicitacao_numeracao}}">
+                                    <label for="cd_solicitacao_numeracao">Nº Solicitação:</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row justify-content-xl-start">
+                                <div class="form-label-group col-xl-12">
+                                    <textarea class="form-control col-xl-12" id="ds_doc" name="ds_doc"
+                                              placeholder="Texto D.O.C.:">{{numeracao.ds_doc}}</textarea>
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div class="col-xl-auto form-row ">
+                                <div class="col-xl-2 mb-auto">
+                                    <button class="btn btn-warning btn-salvar" type="submit">Retificar</button>
+                                </div>
+
+                                <div class="col-xl-2 mb-auto">
+                                    <a class="btn btn-primary " href="{{url_for('index')}}">
+                                        Voltar
+                                    </a>
+                                </div>
+                                {% if retificacao %}
+
+                                {% endif %}
+
+                                <div class="form-label-group col-xl-auto">
+                                    <input class="form-control col-xl-auto" hidden id="nm_login" name="nm_login"
+                                           type="text" value="{{session['logged_user']}}">
+                                    <label for="nm_login">Usuario: {{session['logged_user']}}</label>
+                                </div>
+                            </div>
+                            <br/>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- tab Anexo -->
+                {% include 'includes/anexo_tab.html' %}
+                <!-- /.tab Anexo -->
+            </div>
+        </div>
+        <div class="card-footer small text-muted">{{ titulo|title }}</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<div aria-labelledby="anexo-tab" class="tab-pane fade" id="anexo" role="tabpanel">
+    <br/>
+    {% if insert %}
+    <form action="{{url_for('files_part.upload_file')}}" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input id="fk_numeracao" name="id_numeracao" type="hidden" value="{{id_numeracao}}">
+            <div class="form-row">
+                <input class="col-xl-6" name="file" required type="file">
+            </div>
+            <br/><br/>
+            <div class="col-xl-auto form-row ">
+                <div class="col-xl-2 mb-auto">
+                    <button class="btn btn-success btn-salvar" type="submit">Salvar</button>
+                </div>
+                <br/>
+            </div>
+        </fieldset>
+    </form>
+    {% endif %}
+
+    <br/><br/>
+    <fieldset>
+        <div class="form-row">
+            <ul class="row">
+                <!--                                % if id_cross %-->
+                <!--                                % for c in id_cross %-->
+                <!--                                <input name="id_cross" type="hidden" value="c.id">-->
+                <!--                                % endfor %-->
+                <!--                                % endif %-->
+
+                {% if files %}
+                {% for f in files %}
+                <form action="{{url_for('files_part.delete_file')}}" enctype="multipart/form-data" method="post">
+                    <input name="id_files" type="hidden" value="{{f.id}}">
+                    <input name="nm_file" type="hidden" value="{{f.nm_file}}">
+                    <input name="id_numeracao" type="hidden" value="{{id_numeracao}}">
+
+                    <li class="list-inline-item" style="width: 100px">
+                        <label class="col-xl-auto">
+
+                            <a href="{{file_path}}/{{f.nm_file}}" target="_blank">
+                                <img class="img-thumbnail" height="100%"
+                                     src="../static/images/extensions/{{f.nm_extension}}.png"
+                                     title="{{f.nm_file}}" width="100%"/>
+                                {% if insert %}
+                                <button class="btn btn-danger smaller" type="submit">
+                                    <a class="fa fa-trash-alt"></a>
+                                </button>
+                                {% endif %}
+                            </a>
+                        </label>
+                    </li>
+                </form>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+        <div class="col-xl-2 float-xl-right">
+            <a class="btn btn-primary " href="{{url_for('index')}}">
+                Voltar
+            </a>
+        </div>
+    </fieldset>
+</div>

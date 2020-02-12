@@ -1,0 +1,53 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container col-xl-8">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                       id="home-tab"
+                       role="tab">{{ titulo|title }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <fieldset>
+                        <input class="" hidden id="id_user" name="id_user" value="{{id_user}}">
+                        <br/>
+
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Nome: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ user.nm_nome }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>Login: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ user.nm_login }}</label>
+
+                            <label class="col-xl-2 mb-auto"><strong>RF: </strong></label>
+                            <label class="col-xl-4 mb-auto"> {{ user.nr_rf }}</label>
+                        </div>
+                        <br/>
+                        <div class="form-row col-xl-auto">
+                            <label class="col-xl-2 mb-auto"><strong>E-mail: </strong></label>
+                            <label class="col-xl-10 mb-auto"> {{ user.nm_email }}</label>
+                        </div>
+                        <br/>
+                        <div class="col-xl-auto mb-auto">
+                            <a class="btn btn-primary " href="{{url_for('users.userList')}}">
+                                Voltar
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+    </div>
+</div>
+{% endblock %}

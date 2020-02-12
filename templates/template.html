@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--Head-->
+{% include 'includes/head.html' %}
+<!--/.Head-->
+
+<!--header-->
+{% include 'includes/header.html' %}
+<!--/.header-->
+<body>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    {% include 'includes/sidebar.html' %}
+    <!-- /.sidebar -->
+
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{(url_for('index'))}}">Início</a>
+                </li>
+                <li class="breadcrumb-item active">{{ titulo|title }}</li>
+            </ol>
+            <!-- Page block Content -->
+            {% block conteudo%}{% endblock %}
+            <!-- /.Page block Content -->
+
+        </div>
+        <!-- /.container-fluid -->
+        <br/>
+    </div>
+</div>
+
+<!--Footer-->
+{% include 'includes/footer.html' %}
+<!--/.Footer-->
+
+</body>
+
+</html>

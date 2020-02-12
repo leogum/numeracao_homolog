@@ -1,0 +1,24 @@
+<header>
+    <nav class="navbar navbar-expand static-top">
+        <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarText" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="{{(url_for('index'))}}">
+                        <img class="img-fluid" src="{{ url_for('static', filename='images/LogoSEL.png') }}"
+                             style="max-width:120px; max-height: 50px; margin: -7px; " alt="">
+                    </a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <a class="nav-item" href="{{(url_for('logout'))}}">
+                    <button class="btn btn-light" type="button">Logout</button>
+                </a>
+            </span>
+        </div>
+    </nav>
+</header>

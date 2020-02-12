@@ -1,0 +1,99 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<div class="col-xl-auto">
+    <div class="card-1 mb-3 ">
+        <div class="card-header ">
+            <i class="fas fa-table"></i>
+            {{ titulo|title }}
+        </div>
+        <div class="card-body">
+            <br/>
+            <div class="table-responsive">
+                <div class="dataTables_wrapper dt-bootstrap4" id="dataTable_wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table aria-describedby="dataTable_info" cellspacing="0"
+                                   class="table table-bordered dataTable "
+                                   id="dataTable" role="grid" style="width: 100%;" width="100%">
+                                <thead class="bg-light">
+                                <tr role="row">
+                                    <th colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Detalhe
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting_asc" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Nome
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Login
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        RF
+                                    </th>
+                                    <th aria-controls="dataTable"
+                                        aria-label="Position: activate to sort column ascending"
+                                        class="sorting" colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        E-mail
+                                    </th>
+                                    <th colspan="1" rowspan="1" style="width: 243px;" tabindex="0">
+                                        Editar
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tfoot class="bg-light">
+                                <tr>
+                                    <th colspan="1" rowspan="1">Detalhe</th>
+                                    <th colspan="1" rowspan="1">Nome</th>
+                                    <th colspan="1" rowspan="1">Login</th>
+                                    <th colspan="1" rowspan="1">RF</th>
+                                    <th colspan="1" rowspan="1">E-mail</th>
+                                    <th colspan="1" rowspan="1">Editar</th>
+                                </tr>
+                                </tfoot>
+                                <tbody class="bg-white">
+                                {% for r in results %}
+                                <tr class="odd" role="row">
+                                    <td class="text-center">
+                                        <form action="{{url_for('users.userR')}}" method="post">
+<!--                                        <form>-->
+                                            <label for="id_userR" hidden>
+                                                <input id="id_userR" name="id_user" value="{{ r.id }}">
+                                            </label>
+                                            <button style="border: #ffffff; background-color: #ffffff" type="submit">
+                                                <i class="fa fa-search-plus" style="color: #005dbf"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>{{ r.nm_nome }}</td>
+                                    <td class="sorting_1">{{ r.nm_login }}</td>
+                                    <td>{{ r.nr_rf }}</td>
+                                    <td>{{ r.nm_email }}</td>
+                                    <td class="text-center">
+<!--                                        <form>-->
+                                        <form action="{{url_for('users.userU')}}" method="post">
+                                            <label for="id_userU" hidden>
+                                                <input id="id_userU" name="id_user" value="{{ r.id }}">
+                                            </label>
+                                            <button style="border: #ffffff; background-color: #ffffff" type="submit">
+                                                <i class="fa fa-folder-plus" style="color: #05BF00"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+</div>
+{% endblock %}
